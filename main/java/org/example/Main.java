@@ -6,7 +6,7 @@ import org.example.chess.ChessMatch;
 
 public class Main {
     public static void main(String[] args) {
-        ChessMatch chessMatch = new ChessMatch(123456798);
+        ChessMatch chessMatch = new ChessMatch();
         UI.printBoard(chessMatch.getPieces());
     }
 }
