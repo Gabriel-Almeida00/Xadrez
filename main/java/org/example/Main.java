@@ -1,7 +1,5 @@
 package org.example;
 
-import org.example.boardGame.Board;
-import org.example.boardGame.Position;
 import org.example.chess.ChessException;
 import org.example.chess.ChessMatch;
 import org.example.chess.ChessPiece;
@@ -19,7 +17,7 @@ public class Main {
         ChessMatch chessMatch = new ChessMatch();
         List<ChessPiece> captured = new ArrayList<>();
 
-        while(true) {
+        while(!chessMatch.getCheckMate()) {
             try {
                 UI.clearScreen();
                 UI.printMatch(chessMatch, captured);
@@ -40,13 +38,17 @@ public class Main {
                 if(capturedPiece != null){
                     captured.add(capturedPiece);
                 }
-            }catch (ChessException e){
+            }
+            catch (ChessException e){
                 System.out.println(e.getMessage());
                 sc.nextLine();
-            }catch (InputMismatchException e) {
+            }
+            catch (InputMismatchException e) {
                 System.out.println(e.getMessage());
                 sc.nextLine();
             }
         }
+        UI.clearScreen();
+        UI.printMatch(chessMatch, captured);
     }
 }
